@@ -114,6 +114,54 @@ const inputElement = document.getElementById('text')
 //   - El texto tiene X consonantes.
 //   - Has introducido X espacios
 
-inputElement.addEventListener('input', event => {
-    analizeInput(event.target.value)
-})
+// inputElement.addEventListener('input', event => {
+//     analizeInput(event.target.value)
+// })
+
+
+// - Con este HTML consigue que al introducir un número POSITIVO y MAYOR de 0 se genere la tabla de multiplicar de ese número del 0 al 10 como elementos de la lista. En el caso de que el número no sea correcto o no haya número, el botón estará desactivado.
+
+const inputNumber = document.getElementById('number')
+const buttonGenerate = document.getElementById('button-generate')
+const multiplyList = document.getElementById('multiply-list')
+
+const validateNUmber =()=>{
+   if(inputNumber.value>0){
+    buttonGenerate.disabled=false
+   }else{
+    buttonGenerate.disabled=true
+   }
+}
+
+inputNumber.addEventListener('input',validateNUmber)
+
+const generateMultiplyTable=()=>{
+    const fragment =document.createDocumentFragment()
+    for(let i=0;i<11;i++){
+        const newLi =document.createElement('li')
+        newLi.textContent = `${inputNumber.value} x ${i} = ${value*i}`
+        fragment.append(newli)
+    }
+    multiplyList.textContent='';
+    multiplyList.append(fragment)
+}
+buttonGenerate.addEventListener('click', generateMultiplyTable)
+
+// - Con este objeto debes crear tarjetas de usuario que muestren todos los datos, el diseño es libre, lo importante es que muestren toda la información del usuario y la imagen de perfil. Crea una función que genere todas las tarjetas de usuario y las inserte en el DOM
+generateUseCard= ()=>{
+    const containerCards = documnet.createElement('div')
+    containerCards.classList.add('cards')
+
+    USERS.forEach(user=>{
+        const newCard = document.createElement('div')
+        newCard.classList.add('card')
+
+        const newImage = document.createElement('img')
+        newImage.textContent=user.newImage
+
+        const newName = document.createElement('h2')
+        newName.textContent = user.newName
+        
+        const newAge = document.createElement('span')
+    })
+}
